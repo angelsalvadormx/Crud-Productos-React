@@ -30,10 +30,23 @@ function App() {
               productos={productos} fun={consultarApi} />
           )} />
           <Route exact path="/productos-nuevo" render={() => (
-            <AgregarProducto fun={consultarApi}/>
+            <AgregarProducto fun={consultarApi} />
           )} />
           <Route exact path="/productos/:id" component={Producto} />
-          <Route exact path="/productos/editar/:id" component={EditarProducto} />
+          <Route exact path="/productos/editar/:id" render={props => {
+            const idProducto = parseInt(props.match.params.id);
+            console.log(idProducto);
+            console.log("productos",productos);
+            
+            const producto = productos.find(producto => producto.id === idProducto);
+            console.log("producto",producto);
+            
+            return (
+              <EditarProducto
+                producto={producto} fun={consultarApi} />
+            )
+          }}/>
+          
         </Switch>
       </div>
       <Pie />

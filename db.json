@@ -1,15 +1,15 @@
 {
   "restaurante": [
     {
-      "nombre": "Tests",
-      "precio": "10",
-      "categoria": "postre",
+      "nombre": "Tacos",
+      "precio": "15",
+      "categoria": "ensalada",
       "id": 2
     },
     {
-      "nombre": "Comida",
-      "precio": "50",
-      "categoria": "postre",
+      "nombre": "Coca cola",
+      "precio": "15",
+      "categoria": "bebida",
       "id": 3
     },
     {

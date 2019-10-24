@@ -9,10 +9,10 @@ const Encabezado = () => {
        </Link>
         <ul className="navbar-nav mr-auto">
          <li className="nav-item">
-              <Link to="/productos" className="nav-link" activeClassName="active">Productos</Link>
+              <Link to="/productos" className="nav-link" >Productos</Link>
          </li>
          <li className="nav-item">
-              <Link to="/productos-nuevo" className="nav-link" activeClassName="">Nuevo Producto</Link>
+              <Link to="/productos-nuevo" className="nav-link" >Nuevo Producto</Link>
          </li>
         </ul> 
       </div>

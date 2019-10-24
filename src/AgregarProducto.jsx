@@ -1,19 +1,18 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import axios from 'axios';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-const AgregarProducto = ({history, fun}) => {
+const AgregarProducto = ({ history, fun }) => {
     const [nombre, guardarNombre] = useState('');
     const [precio, guardarPrecio] = useState('');
     const [categoria, guardarCategoria] = useState('');
-    const leerRadio = e => { guardarCategoria(e.target.value);}
+    const leerRadio = e => { guardarCategoria(e.target.value); }
     const [error, saveError] = useState(false);
 
-    const addProduct = async(e) => {
+    const agregarNuevo = async (e) => {
         e.preventDefault();
-        if(nombre==='' || precio==='' || categoria==='')
-            { saveError(true); return; }
+        if (nombre === '' || precio === '' || categoria === '') { saveError(true); return; }
         saveError(false);
         try {
             const resultado = await axios.post('http://localhost:4000/restaurante', {
@@ -27,7 +26,7 @@ const AgregarProducto = ({history, fun}) => {
                 'success'
             )
         }
-        catch(error) {
+        catch (error) {
             console.log(error);
             Swal.fire(
                 'Error!',
@@ -36,44 +35,44 @@ const AgregarProducto = ({history, fun}) => {
         }
         //redireccionar a /productos
         history.push('/productos');
-    } 
+    }
 
-    return(
+    return (
         <div className="col-md-8 mx-auto ">
             <h1 className="text-center">Agregar Nuevo Producto</h1>
 
-            <form className="mt-5" onSubmit={addProduct}>
+            <form className="mt-5" onSubmit={agregarNuevo}>
                 <div className="form-group">
                     <label>Nombre Platillo</label>
-                    <input type="text" className="form-control" name="nombre" placeholder="Nombre Platillo" onChange = { e => guardarNombre(e.target.value)}/>
+                    <input type="text" className="form-control" name="nombre" placeholder="Nombre Platillo" onChange={e => guardarNombre(e.target.value)} />
                 </div>
                 <div className="form-group">
                     <label>Precio Platillo</label>
-                    <input type="number" className="form-control" name="precio" placeholder="Precio Platillo" onChange = { e => guardarPrecio(e.target.value)}/>
+                    <input type="number" className="form-control" name="precio" placeholder="Precio Platillo" onChange={e => guardarPrecio(e.target.value)} />
                 </div>
 
                 <legend className="text-center">Categoría:</legend>
                 <div className="text-center">
                     <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="radio" name="categoria" value="postre" onChange = {leerRadio}/>
+                        <input className="form-check-input" type="radio" name="categoria" value="postre" onChange={leerRadio} />
                         <label className="form-check-label">
                             Postre
                         </label>
                     </div>
                     <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="radio" name="categoria" value="bebida" onChange = {leerRadio}/>
+                        <input className="form-check-input" type="radio" name="categoria" value="bebida" onChange={leerRadio} />
                         <label className="form-check-label">
                             Bebida
                         </label>
                     </div>
                     <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="radio" name="categoria" value="cortes" onChange = {leerRadio}/>
+                        <input className="form-check-input" type="radio" name="categoria" value="cortes" onChange={leerRadio} />
                         <label className="form-check-label">
                             Cortes
                         </label>
                     </div>
                     <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="radio" name="categoria" value="ensalada" onChange = {leerRadio}/>
+                        <input className="form-check-input" type="radio" name="categoria" value="ensalada" onChange={leerRadio} />
                         <label className="form-check-label">
                             Ensalada
                         </label>
@@ -84,5 +83,5 @@ const AgregarProducto = ({history, fun}) => {
         </div>
     );
 }
- 
+
 export default withRouter(AgregarProducto);

@@ -1,16 +1,3 @@
 {
-  "restaurante": [
-    {
-      "precio": "80",
-      "nombre": "Hamburguesa",
-      "categoria": "comidas",
-      "id": 1
-    },
-    {
-      "precio": "31",
-      "nombre": "Gelatina",
-      "categoria": "postres",
-      "id": 2
-    }
-  ]
+  "restaurante": []
 }

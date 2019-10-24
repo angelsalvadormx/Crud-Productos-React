@@ -11,12 +11,12 @@ import AgregarProducto from './AgregarProducto';
 
 function App() {
   const [productos, guardarProductos] = useState([]);
+  const consultarApi = async () => {
+    const resultado = await axios.get('http://localhost:4000/restaurante');
+    console.log("res ",resultado.data);
+    guardarProductos(resultado.data); 
+  }
   useEffect(() => {
-    const consultarApi = async () => {
-      const resultado = await axios.get('http://localhost:4000/restaurante');
-      console.log(resultado.data);
-      guardarProductos(resultado.data); 
-    }
     consultarApi();
   }, []);
 
@@ -27,7 +27,7 @@ function App() {
         <Switch>
           <Route exact path="/productos" render={() => (
             <Productos
-              productos={productos} />
+              productos={productos} fun={consultarApi}/>
           )} />
           <Route exact path="/productos-nuevo" component={AgregarProducto} />
           <Route exact path="/productos/:id" component={Producto} />

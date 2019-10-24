@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 
@@ -13,8 +13,8 @@ function App() {
   const [productos, guardarProductos] = useState([]);
   const consultarApi = async () => {
     const resultado = await axios.get('http://localhost:4000/restaurante');
-    console.log("res ",resultado.data);
-    guardarProductos(resultado.data); 
+    console.log("res ", resultado.data);
+    guardarProductos(resultado.data);
   }
   useEffect(() => {
     consultarApi();
@@ -27,9 +27,11 @@ function App() {
         <Switch>
           <Route exact path="/productos" render={() => (
             <Productos
-              productos={productos} fun={consultarApi}/>
+              productos={productos} fun={consultarApi} />
           )} />
-          <Route exact path="/productos-nuevo" component={AgregarProducto} />
+          <Route exact path="/productos-nuevo" render={() => (
+            <AgregarProducto fun={consultarApi}/>
+          )} />
           <Route exact path="/productos/:id" component={Producto} />
           <Route exact path="/productos/editar/:id" component={EditarProducto} />
         </Switch>

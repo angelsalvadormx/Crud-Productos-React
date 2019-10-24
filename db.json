@@ -1,3 +1,22 @@
 {
-  "restaurante": []
+  "restaurante": [
+    {
+      "nombre": "Tests",
+      "precio": "10",
+      "categoria": "postre",
+      "id": 2
+    },
+    {
+      "nombre": "Comida",
+      "precio": "50",
+      "categoria": "postre",
+      "id": 3
+    },
+    {
+      "nombre": "BOlillo",
+      "precio": "50",
+      "categoria": "cortes",
+      "id": 4
+    }
+  ]
 }
